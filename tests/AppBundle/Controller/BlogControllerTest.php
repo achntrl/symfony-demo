@@ -16,7 +16,6 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use AppBundle\Entity\Post;
 use AppBundle\Entity\Comment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 
 

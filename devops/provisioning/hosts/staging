@@ -1,0 +1,2 @@
+[staging]
+62.4.19.72  ansible_ssh_user=ubuntu

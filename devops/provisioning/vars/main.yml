@@ -1,0 +1,20 @@
+---
+#PUT here your main variable
+timezone: Europe/Paris
+project_name: fansible-tywin
+port: 80
+apt_install:
+  - git
+  - python2.7
+  - python2.7-dev
+  - php5-cli
+  - php5-fpm
+  - php5-sqlite
+
+
+# Needed for the apt role to work with ansible 2.0
+apt_install_repositories: ['ppa:fkrull/deadsnakes-python2.7']
+apt_remove_repositories: []
+apt_remove: []
+nodejs_version: 4
+
