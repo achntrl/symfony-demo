@@ -9,3 +9,16 @@ namespace :deploy do
         end
     end
 end
+
+namespace :deploy do
+    desc "Recreate symlink"
+    task :resymlink do
+  	    on 'ubuntu@62.4.19.72' do
+            within release_path do
+    			execute "rm -f #{current_path} && ln -s #{release_path} #{current_path}"
+    		end
+    	end
+    end
+end
+
+after "deploy:symlink:release", "deploy:resymlink"
