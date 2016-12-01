@@ -47,16 +47,6 @@ class BlogController extends Controller
     {
         $posts = $this->getDoctrine()->getRepository(Post::class)->findLatest($page);
 
-        $logger = $this->get('logger');
-        $logger->info('I just got the logger');
-        $logger->error('An error occurred');
-
-        $logger->critical('I left the oven on!', array(
-        // include extra "context" info in your logs
-            'cause' => 'in_hurry',
-            ));
-
-
         return $this->render('blog/index.html.twig', ['posts' => $posts]);
     }
 
