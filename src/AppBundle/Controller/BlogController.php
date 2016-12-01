@@ -42,7 +42,7 @@ class BlogController extends Controller
     public function indexAction($page)
     {
         $posts = $this->getDoctrine()->getRepository(Post::class)->findLatest($page);
-        //breakthings();
+        iBreak();
         return $this->render('blog/index.html.twig', ['posts' => $posts]);
     }
 
