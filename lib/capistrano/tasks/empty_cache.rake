@@ -21,4 +21,4 @@ namespace :deploy do
     end
 end
 
-after "deploy:symlink:release", "deploy:resymlink"
+after "deploy:symlink:release", "deploy:resymlink", "nginx:restart"
