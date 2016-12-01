@@ -22,6 +22,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
+
 
 /**
  * Controller used to manage blog contents in the public part of the site.
@@ -39,10 +43,25 @@ class BlogController extends Controller
      * @Method("GET")
      * @Cache(smaxage="10")
      */
+
+    // create a log channel
+    public $logger = new Logger('name');
+    $logger->pushHandler(new StreamHandler('var/logger.log', Logger::WARNING));
+
     public function indexAction($page)
     {
         $posts = $this->getDoctrine()->getRepository(Post::class)->findLatest($page);
-        
+
+        $logger = $this->get('logger');
+        $logger->info('I just got the logger');
+        $logger->error('An error occurred');
+
+        $logger->critical('I left the oven on!', array(
+        // include extra "context" info in your logs
+            'cause' => 'in_hurry',
+            ));
+
+
         return $this->render('blog/index.html.twig', ['posts' => $posts]);
     }
 
