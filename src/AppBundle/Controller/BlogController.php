@@ -22,8 +22,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
 
 
 
@@ -44,9 +42,6 @@ class BlogController extends Controller
      * @Cache(smaxage="10")
      */
 
-    // create a log channel
-    public $logger = new Logger('name');
-    $logger->pushHandler(new StreamHandler('var/logger.log', Logger::WARNING));
 
     public function indexAction($page)
     {
